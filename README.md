@@ -26,15 +26,14 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     'format' = 'parquet'
     ));
 
-*Insert data into the table*
-
-    INSERT INTO CUSTOMER VALUES (1, 'Prasad', 'Nadig', 1234567890, '2020-01-01');\
-    INSERT INTO CUSTOMER VALUES (2, 'Jeff', 'Bezos', 0987654321, '2000-01-01');\
-    INSERT INTO CUSTOMER VALUES (3, 'Bit', 'Coin', 1357908642, '2020-01-01');\
-    INSERT INTO CUSTOMER VALUES (4, 'Ethereum', 'Eth', 0864213579, '2020-01-01');\
-    INSERT INTO CUSTOMER VALUES (5, 'Cardano', 'Ada', 6784567543, '2020-01-01');\
-    INSERT INTO CUSTOMER VALUES (6, 'Cosmos', 'Atom', 6789054321, '2020-01-01');\
-    INSERT INTO CUSTOMER VALUES (7, 'Polygon', 'Matic', 5647382910, '2020-01-01');\
+*Insert data into the table*\
+    INSERT INTO CUSTOMER VALUES (1, 'Prasad', 'Nadig', 1234567890, '2020-01-01');
+    INSERT INTO CUSTOMER VALUES (2, 'Jeff', 'Bezos', 0987654321, '2000-01-01');
+    INSERT INTO CUSTOMER VALUES (3, 'Bit', 'Coin', 1357908642, '2020-01-01');
+    INSERT INTO CUSTOMER VALUES (4, 'Ethereum', 'Eth', 0864213579, '2020-01-01');
+    INSERT INTO CUSTOMER VALUES (5, 'Cardano', 'Ada', 6784567543, '2020-01-01');
+    INSERT INTO CUSTOMER VALUES (6, 'Cosmos', 'Atom', 6789054321, '2020-01-01');
+    INSERT INTO CUSTOMER VALUES (7, 'Polygon', 'Matic', 5647382910, '2020-01-01');
 
 --Select the data to validate inserts
 SELECT * FROM CUSTOMER;
