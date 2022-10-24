@@ -80,9 +80,9 @@ Select the data to validate if the records were deleted
 
     SELECT * FROM customer ORDER BY cust_id;
 
-Again let's go back in time to check how the table looks like 5 mins back
+Again let's go back in time to check how the table looks like 2 mins back
 
-    SELECT * FROM customer FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) ORDER BY cust_id;
+    SELECT * FROM customer FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '2' MINUTE) ORDER BY cust_id;
 
 ### Schema Evolution
 
@@ -155,7 +155,7 @@ Athena supports the following table DDL operations for Iceberg tables.
     
     SHOW CREATE TABLE customers;
 
-*Finally DROP table*
+*Finally DROP table, drop table not only drops the table metadata, it also deletes the underlying data on S3*
     
     DROP TABLE customers;
 
