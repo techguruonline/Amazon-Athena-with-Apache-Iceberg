@@ -27,7 +27,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     PHONE_NO INT,
     JOIN_DT DATE
     )
-    LOCATION 's3://emr-studio-demo-s3bucket-5he9azv0zpew/athena-iceberg/tables/'
+    LOCATION 's3://misc-experimental/athena-iceberg/tables/'
     TBLPROPERTIES(
     'table_type' = 'ICEBERG'
     'format' = 'parquet'
