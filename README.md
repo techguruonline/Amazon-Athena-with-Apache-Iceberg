@@ -122,7 +122,7 @@ Again let's go back in time to check how the table looks like 5 mins back
 # Managing Iceberg Tables
 Athena supports the following table DDL operations for Iceberg tables.
 
-*Rename table*
+*Rename table <br> *
     ALTER TABLE customer RENAME TO customers;
 
 *Set table properties for an existing table, Add properties to an Iceberg table and sets their assigned values.*
