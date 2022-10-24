@@ -29,7 +29,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     )
     LOCATION 's3://misc-experimental/athena-iceberg/tables/'
     TBLPROPERTIES(
-    'table_type' = 'ICEBERG'
+    'table_type' = 'ICEBERG',
     'format' = 'parquet'
     );
 
