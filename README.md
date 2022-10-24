@@ -133,13 +133,23 @@ Athena supports the following table DDL operations for Iceberg tables.
     'optimize_rewrite_delete_file_threshold'='10'
     )
 
+*Show table properties*
+
+    SHOW TBLPROPERTIES customers;
+
+
 *Unset table properties*
     
     ALTER TABLE customers UNSET TBLPROPERTIES ('write_target_data_file_size_bytes');
 
+*Run the show table properties again to verify*
+
+    SHOW TBLPROPERTIES customers;
+
 *Describe table, when the FORMATTED option is specified, the output displays additional information such as table location and properties.*
     
     DESCRIBE customers;
+    DESCRIBE FORMATTED customers;
 
 *Show create table, displays a CREATE TABLE DDL statement that can be used to recreate the Iceberg table*
     SHOW CREATE TABLE customers;
