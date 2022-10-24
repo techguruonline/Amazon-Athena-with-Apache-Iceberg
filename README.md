@@ -5,26 +5,26 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 
 
 # Introduction:
-#### Iceberg is a high-performance format for huge analytic tables. Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time.
+    Iceberg is a high-performance format for huge analytic tables. Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time.
 
 *--Create a new Database*
 
-CREATE DATABASE ATHENA_ICEBERG;
+    CREATE DATABASE ATHENA_ICEBERG;
 
 *--Let's create a new table*
 
-CREATE TABLE CUSTOMER (
-CUST_ID INT,
-FIRST_NAME STRING,
-LAST_NAME STRING,
-PHONE_NO INT,
-JOIN_DT DATE
-)
-LOCATION 's3://emr-studio-demo-s3bucket-5he9azv0zpew/athena-iceberg/tables/'
-TBLPROPERTIES(
-'table_type' = 'ICEBERG'
-'format' = 'parquet'
-));
+    CREATE TABLE CUSTOMER (
+    CUST_ID INT,
+    FIRST_NAME STRING,
+    LAST_NAME STRING,
+    PHONE_NO INT,
+    JOIN_DT DATE
+    )
+    LOCATION 's3://emr-studio-demo-s3bucket-5he9azv0zpew/athena-iceberg/tables/'
+    TBLPROPERTIES(
+    'table_type' = 'ICEBERG'
+    'format' = 'parquet'
+    ));
 
 *--Insert data into the table*
 
