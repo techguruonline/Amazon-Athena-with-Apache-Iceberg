@@ -9,8 +9,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 ##### Iceberg supports flexible SQL commands to merge new data, update existing rows, and perform targeted deletes. Iceberg can eagerly rewrite data files for read performance, or it can use delete deltas for faster updates.
 ##### Supports Full Schema Evolution and Time travel / Rollback features
 ##### For more information, please visit https://iceberg.apache.org/ 
-##### Supports Full Schema Evolution and Time travel / Rollback features
-##### For more information, please visit https://iceberg.apache.org/
+
 
 ## Let's start with creating a database in Athena
 
