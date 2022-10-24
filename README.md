@@ -88,7 +88,7 @@ Again let's go back in time to check how the table looks like 5 mins back
 
 ##### Iceberg schema updates are metadata-only changes. No data files are changed when you perform a schema update.
 
-*Add a new column to Customer table*
+*Add a new column to Customer table* <br>
 
     ALTER TABLE customer ADD COLUMNS (loc string);
 
