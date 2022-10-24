@@ -172,9 +172,9 @@ Lake Formation – Integration with Amazon Lake Formation is not supported.
 
 Unsupported operations – The following Athena operations are not supported for Iceberg tables.
 
-    CREATE TABLE AS <br>
-    ALTER TABLE SET LOCATION <br>
-    CREATE VIEW <br>
-    SHOW CREATE VIEW <br>
-    DROP VIEW <br>
-    DESCRIBE VIEW <br>
+    CREATE TABLE AS
+    ALTER TABLE SET LOCATION
+    CREATE VIEW
+    SHOW CREATE VIEW
+    DROP VIEW
+    DESCRIBE VIEW
