@@ -5,10 +5,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 
 
 # Introduction:
-##### Iceberg is a high-performance format for huge analytic tables. Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time. 
-#### Iceberg supports flexible SQL commands to merge new data, update existing rows, and perform targeted deletes. Iceberg can eagerly rewrite data files for read performance, or it can use delete deltas for faster updates.
-#### Supports Full Schema Evolution and Time travel / Rollback features
-#### For more information, please visit https://iceberg.apache.org/
+##### Iceberg is a high-performance format for huge analytic tables. Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time.
 
 *Create a new Database*
 
@@ -39,32 +36,40 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     INSERT INTO CUSTOMER VALUES (6, 'Cosmos', 'Atom', 6789054321, '2020-01-01');
     INSERT INTO CUSTOMER VALUES (7, 'Polygon', 'Matic', 5647382910, '2020-01-01');
 
---Select the data to validate inserts
-SELECT * FROM CUSTOMER;
+*Select the data to validate inserts*
+    
+    SELECT * FROM CUSTOMER;
 
---Even though the data resides on S3, you can treat this like a traditional RDBMS i.e, you can run ACID transactions like UPDATE, INSERT, DELETE etc
---Now let's UPDATE a record
-UPDATE CUSTOMER
-SET PHONE_NO = 2468013579
-WHERE CUST_ID = 2;
+Even though the data resides on S3, you can treat this like a traditional RDBMS i.e, you can run ACID transactions like UPDATE, INSERT, DELETE etc
+Now let's UPDATE a record
+    
+    UPDATE CUSTOMER
+    SET PHONE_NO = 2468013579
+    WHERE CUST_ID = 2;
 
---Select the data to validate update
-SELECT * FROM CUSTOMER WHERE CUST_ID = 2;
+*Select the data to validate update*
+    
+    SELECT * FROM CUSTOMER WHERE CUST_ID = 2;
 
---Iceberg table provides powerful features like Timetravel which allows you to go back in time and see the data at that point in itme.
--- Let's try out the time travel to check what was the Phone number of Customer with Cust_id = 2, 5 mins back
-SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) WHERE CUST_ID = 2;
+Iceberg table provides powerful features like Timetravel which allows you to go back in time and see the data at that point in itme.
+Let's try out the time travel to check what was the Phone number of Customer with Cust_id = 2, 5 mins back <br>
+    
+    SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) WHERE CUST_ID = 2;
 
 
--- You can also check the status of the table at a specific point in time
-SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF TIMESTAMP '2022-10-24 00:00:00' WHERE CUST_ID = 2;
+You can also check the status of the table at a specific point in time
 
--- Now let's delete couple of records
-DELETE FROM CUSTOMER WHERE CUST_ID IN (6,7);
+    SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF TIMESTAMP '2022-10-24 00:00:00' WHERE CUST_ID = 2;
 
---Select the data to validate if the records were deleted
-SELECT * FROM CUSTOMER;
+Now let's delete couple of records
 
---Again let's go back in time to check how the table looks like 5 mins back
-SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE);
+    DELETE FROM CUSTOMER WHERE CUST_ID IN (6,7);
+
+Select the data to validate if the records were deleted
+
+    SELECT * FROM CUSTOMER;
+
+Again let's go back in time to check how the table looks like 5 mins back
+
+    SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE);
 
