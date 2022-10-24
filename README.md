@@ -31,7 +31,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     TBLPROPERTIES(
     'table_type' = 'ICEBERG'
     'format' = 'parquet'
-    ));
+    );
 
 ### Insert / Update / Delete Operations
 
