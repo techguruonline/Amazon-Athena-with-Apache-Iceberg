@@ -12,7 +12,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 ##### Supports Full Schema Evolution and Time travel / Rollback features
 ##### For more information, please visit https://iceberg.apache.org/
 
-### Let's start with creating a database in Athena
+## Let's start with creating a database in Athena
 
 *Create a new Database*
 
