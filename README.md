@@ -15,11 +15,11 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 
 *Create a new Database*
 
-    CREATE DATABASE ATHENA_ICEBERG;
+    CREATE DATABASE IF NOT EXISTS ATHENA_ICEBERG;
 
 *Let's create a new table, notice Athena natively supports ICEBERG as the table type*
 
-    CREATE TABLE CUSTOMER (
+    CREATE TABLE IF NOT EXISTS CUSTOMER (
     CUST_ID INT,
     FIRST_NAME STRING,
     LAST_NAME STRING,
@@ -152,6 +152,7 @@ Athena supports the following table DDL operations for Iceberg tables.
     DESCRIBE FORMATTED customers;
 
 *Show create table, displays a CREATE TABLE DDL statement that can be used to recreate the Iceberg table*
+    
     SHOW CREATE TABLE customers;
 
 *Finally DROP table*
