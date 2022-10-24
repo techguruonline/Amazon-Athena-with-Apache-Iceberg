@@ -17,7 +17,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 
     CREATE DATABASE ATHENA_ICEBERG;
 
-*Let's create a new table*
+*Let's create a new table, notice Athena natively supports ICEBERG as the table type*
 
     CREATE TABLE CUSTOMER (
     CUST_ID INT,
@@ -120,4 +120,24 @@ Again let's go back in time to check how the table looks like 5 mins back
 
 
 
+# Consideration and Limitations
 
+Tables with Amazon Glue catalog only – Only Iceberg tables created against the Amazon Glue catalog based on specifications defined by the open source glue catalog implementation are supported from Athena.
+
+Table locking support by Amazon Glue only – Unlike the open source Glue catalog implementation, which supports plug-in custom locking, Athena supports Amazon Glue optimistic locking only. Using Athena to modify an Iceberg table with any other lock implementation will cause potential data loss and break transactions.
+
+Parquet files only – Currently, Athena supports Iceberg tables in Parquet file format only. ORC and AVRO are not supported.
+
+Lake Formation – Integration with Amazon Lake Formation is not supported.
+
+Unsupported operations – The following Athena operations are not supported for Iceberg tables.
+
+CREATE TABLE AS
+ALTER TABLE SET LOCATION
+CREATE VIEW
+
+SHOW CREATE VIEW
+
+DROP VIEW
+
+DESCRIBE VIEW
