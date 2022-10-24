@@ -26,7 +26,8 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     'format' = 'parquet'
     ));
 
-*Insert data into the table*\
+*Insert data into the table*
+    
     INSERT INTO CUSTOMER VALUES (1, 'Prasad', 'Nadig', 1234567890, '2020-01-01');
     INSERT INTO CUSTOMER VALUES (2, 'Jeff', 'Bezos', 0987654321, '2000-01-01');
     INSERT INTO CUSTOMER VALUES (3, 'Bit', 'Coin', 1357908642, '2020-01-01');
