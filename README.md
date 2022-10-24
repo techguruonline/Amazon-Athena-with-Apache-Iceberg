@@ -88,7 +88,7 @@ Again let's go back in time to check how the table looks like 5 mins back
 
 ##### Iceberg schema updates are metadata-only changes. No data files are changed when you perform a schema update.
 
-*Add a new column to Customer table* <br>
+*Add a new column to Customer table*
 
     ALTER TABLE customer ADD COLUMNS (loc string);
 
@@ -119,6 +119,30 @@ Again let's go back in time to check how the table looks like 5 mins back
     SHOW COLUMNS FROM customer;
 
 
+# Managing Iceberg Tables
+Athena supports the following table DDL operations for Iceberg tables.
+
+*Rename table*
+    ALTER TABLE customer RENAME TO customers;
+
+*Set table properties for an existing table, Add properties to an Iceberg table and sets their assigned values.*
+    ALTER TABLE customers SET TBLPROPERTIES (
+    'write_target_data_file_size_bytes'='536870912', 
+    'optimize_rewrite_delete_file_threshold'='10'
+    )
+
+*Unset table properties*
+    ALTER TABLE customers UNSET TBLPROPERTIES ('write_target_data_file_size_bytes');
+
+*Describe table, when the FORMATTED option is specified, the output displays additional information such as table location and properties.*
+    DESCRIBE customers;
+
+*Show create table, displays a CREATE TABLE DDL statement that can be used to recreate the Iceberg table*
+    SHOW CREATE TABLE customers;
+
+*Finally DROP table*
+    DROP TABLE customers;
+
 
 # Consideration and Limitations
 
@@ -132,9 +156,9 @@ Lake Formation – Integration with Amazon Lake Formation is not supported.
 
 Unsupported operations – The following Athena operations are not supported for Iceberg tables.
 
-CREATE TABLE AS <br>
-ALTER TABLE SET LOCATION <br>
-CREATE VIEW <br>
-SHOW CREATE VIEW <br>
-DROP VIEW <br>
-DESCRIBE VIEW <br>
+    CREATE TABLE AS <br>
+    ALTER TABLE SET LOCATION <br>
+    CREATE VIEW <br>
+    SHOW CREATE VIEW <br>
+    DROP VIEW <br>
+    DESCRIBE VIEW <br>
