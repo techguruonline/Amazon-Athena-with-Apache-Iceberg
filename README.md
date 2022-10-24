@@ -1,18 +1,13 @@
 # Amazon-Athena-with-Apache-Iceberg
 Insert / Update / Delete on S3 With Amazon Athena and Apache Iceberg
+Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapshot-based table format for huge analytic datasets
 
 
 Introduction
 Iceberg is a high-performance format for huge analytic tables. Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time.
 
-
--- Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapshot-based table format for huge analytic datasets
--- 
-
-
 --Create a new Database
 CREATE DATABASE ATHENA_ICEBERG;
-
 
 --Let's create a new table
 CREATE TABLE CUSTOMER (
