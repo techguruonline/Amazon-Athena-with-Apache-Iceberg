@@ -33,6 +33,8 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     'format' = 'parquet'
     ));
 
+### Insert / Update / Delete Operations
+
 *Insert data into the table*
     
     INSERT INTO CUSTOMER VALUES (1, 'Prasad', 'Nadig', 1234567890, '2020-01-01');
@@ -45,38 +47,72 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 
 *Select the data to validate inserts*
     
-    SELECT * FROM CUSTOMER;
+    SELECT * FROM customer;
 
 Even though the data resides on S3, you can treat this like a traditional RDBMS i.e, you can run ACID transactions like UPDATE, INSERT, DELETE etc
 Now let's UPDATE a record
     
-    UPDATE CUSTOMER
-    SET PHONE_NO = 2468013579
-    WHERE CUST_ID = 2;
+    UPDATE customer
+    SET phone_no = 2468013579
+    WHERE cust_id = 2;
 
 *Select the data to validate update*
     
-    SELECT * FROM CUSTOMER WHERE CUST_ID = 2;
+    SELECT * FROM customer WHERE CUST_ID = 2;
 
 Iceberg table provides powerful features like Timetravel which allows you to go back in time and see the data at that point in itme.
 Let's try out the time travel to check what was the Phone number of Customer with Cust_id = 2, 5 mins back <br>
     
-    SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) WHERE CUST_ID = 2;
+    SELECT * FROM customer FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) WHERE CUST_ID = 2;
 
 
 You can also check the status of the table at a specific point in time
 
-    SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF TIMESTAMP '2022-10-24 00:00:00' WHERE CUST_ID = 2;
+    SELECT * FROM customer FOR SYSTEM_TIME AS OF TIMESTAMP '2022-10-24 00:00:00' WHERE CUST_ID = 2;
 
-Now let's delete couple of records
+Now let's DELETE couple of records
 
-    DELETE FROM CUSTOMER WHERE CUST_ID IN (6,7);
+    DELETE FROM customer WHERE CUST_ID IN (6,7);
 
 Select the data to validate if the records were deleted
 
-    SELECT * FROM CUSTOMER;
+    SELECT * FROM customer;
 
 Again let's go back in time to check how the table looks like 5 mins back
 
-    SELECT * FROM CUSTOMER FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE);
+    SELECT * FROM customer FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE);
+
+### Schema Evolution
+
+##### Iceberg schema updates are metadata-only changes. No data files are changed when you perform a schema update.
+
+*Add a new column to Customer table*
+
+    ALTER TABLE customer ADD COLUMNS (Location string);
+
+*Insert new record including the newly add column*
+
+    INSERT INTO customer VALUES (7, 'Solana', 'Sol', 5647382910, '2020-01-01', 'New York');
+
+*Select the table to check the data*
+
+    SELECT * FROM customer;
+
+*Rename a column*
+
+    ALTER TABLE customer RENAME COLUMN location TO loc;
+
+*show the columns in a table*
+
+    SHOW COLUMNS FROM customer;
+
+*Drop column*
+
+    ALTER TABLE customer DROP COLUMN loc;
+
+*Select the table to check the data*
+
+    SELECT * FROM customer;
+
+
 
