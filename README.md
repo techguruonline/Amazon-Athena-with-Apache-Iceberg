@@ -5,7 +5,10 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 
 
 # Introduction:
-##### Iceberg is a high-performance format for huge analytic tables. Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time.
+##### Iceberg is a high-performance format for huge analytic tables. Iceberg brings the reliability and simplicity of SQL tables to big data, while making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time. 
+#### Iceberg supports flexible SQL commands to merge new data, update existing rows, and perform targeted deletes. Iceberg can eagerly rewrite data files for read performance, or it can use delete deltas for faster updates.
+#### Supports Full Schema Evolution and Time travel / Rollback features 
+#### For more information, please visit https://iceberg.apache.org/
 
 *Create a new Database*
 
