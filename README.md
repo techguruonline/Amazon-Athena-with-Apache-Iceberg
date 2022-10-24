@@ -134,10 +134,7 @@ Unsupported operations – The following Athena operations are not supported for
 
 CREATE TABLE AS <br>
 ALTER TABLE SET LOCATION <br>
-CREATE VIEW
-
-SHOW CREATE VIEW
-
-DROP VIEW
-
-DESCRIBE VIEW
+CREATE VIEW <br>
+SHOW CREATE VIEW <br>
+DROP VIEW <br>
+DESCRIBE VIEW <br>
